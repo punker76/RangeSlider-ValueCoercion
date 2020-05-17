@@ -1,0 +1,24 @@
+﻿<mah:MetroWindow x:Class="RangeSlider_ValueCoercion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RangeSlider_ValueCoercion"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}}" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <mah:RangeSlider Minimum="0" Maximum="100" LowerValue="25" UpperValue="{Binding MaxValueDisplayed}"  x:Name="RangeSlider"/>
+        <Slider Minimum="0" Maximum="100" Value="{Binding MaxValueDisplayed}" Grid.Row="1" x:Name="Slider"/>
+        <UniformGrid Columns="3" Grid.Row="2">
+            <mah:MetroHeader Header="RangeSlider.UpperValue" Content="{Binding ElementName=RangeSlider, Path=UpperValue}" />
+            <mah:MetroHeader Header="Slider.Value" Content="{Binding ElementName=Slider, Path=Value}" />
+            <mah:MetroHeader Header="Max Value Displayed" Content="{Binding MaxValueDisplayed}" />
+        </UniformGrid>
+    </Grid>
+</mah:MetroWindow>
